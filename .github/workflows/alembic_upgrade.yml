@@ -1,0 +1,32 @@
+name: Run Alembic Upgrade
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  run_alembic_upgrade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Python and dependencies
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - run: |
+          pip install --upgrade pip
+          pip install poetry
+          poetry install --no-root
+
+      - name: Run Alembic Upgrade
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: poetry run alembic upgrade head
