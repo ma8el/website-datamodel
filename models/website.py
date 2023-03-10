@@ -5,7 +5,7 @@ Base = declarative_base()
 
 
 class Greeting(Base):
-    """Schema LandingSocials"""
+    """Schema Greeting"""
     __tablename__ = "greeting"
     id = Column(Integer, primary_key=True, autoincrement=True)
     header = Column(Text, nullable=False)
@@ -13,9 +13,9 @@ class Greeting(Base):
     image_ref = Column(Text, nullable=True)
 
 
-class LandingSocials(Base):
-    """Schema LandingSocials"""
-    __tablename__ = "landing_socials"
+class Socials(Base):
+    """Schema Socials"""
+    __tablename__ = "socials"
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(Text, nullable=False)
     icon = Column(Text, nullable=False)
