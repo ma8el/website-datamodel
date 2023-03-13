@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, Date, Boolean, Text
+from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -38,3 +39,13 @@ class About(Base):
     who_am_i = Column(Text, nullable=False)
     background = Column(Text, nullable=False)
     outside_of_work = Column(Text, nullable=False)
+
+class Me(Base):
+    """Schema Me"""
+    __tablename__ = "me"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    first_name = Column(Text, nullable=False)
+    last_name = Column(Text, nullable=False)
+    mail = Column(Text, nullable=False)
+    city = Column(Text, nullable=False)
+    languages = Column(ARRAY(Text), nullable=False)
