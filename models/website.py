@@ -21,3 +21,10 @@ class Socials(Base):
     icon = Column(Text, nullable=False)
     href = Column(Text, nullable=False)
     color = Column(Text, nullable=False)
+
+class Skills(Base):
+    """Schema Skills"""
+    __tablename__ = "skills"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(Text, nullable=False)
+    logo_url = Column(Text, nullable=False)
