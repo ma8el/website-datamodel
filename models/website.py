@@ -22,9 +22,19 @@ class Socials(Base):
     href = Column(Text, nullable=False)
     color = Column(Text, nullable=False)
 
+
 class Skills(Base):
     """Schema Skills"""
     __tablename__ = "skills"
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(Text, nullable=False)
     logo_url = Column(Text, nullable=False)
+
+
+class About(Base):
+    """Schema About"""
+    __tablename__ = "about"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    who_am_i = Column(Text, nullable=False)
+    background = Column(Text, nullable=False)
+    outside_of_work = Column(Text, nullable=False)
