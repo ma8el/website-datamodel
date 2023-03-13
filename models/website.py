@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, Date, Boolean, Text
-from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy import Column, Integer, Text
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -40,6 +40,7 @@ class About(Base):
     background = Column(Text, nullable=False)
     outside_of_work = Column(Text, nullable=False)
 
+
 class Me(Base):
     """Schema Me"""
     __tablename__ = "me"
@@ -49,3 +50,12 @@ class Me(Base):
     mail = Column(Text, nullable=False)
     city = Column(Text, nullable=False)
     languages = Column(ARRAY(Text), nullable=False)
+
+
+class Cv(Base):
+    """Schema Cv"""
+    __tablename__ = "cv"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    during = Column(Integer, nullable=False)
+    at = Column(Text, nullable=False)
+    projects = Column(JSONB, nullable=False)
